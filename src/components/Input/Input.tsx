@@ -1,14 +1,11 @@
-import React from 'react'
-import { StyledInput } from './styles'
+import { StyledInput } from "./styles";
 
 interface IInput {
-    placeholder:string,
+  placeholder: string;
 }
 
-const Input = ({placeholder}:IInput) => {
-  return (
-    <StyledInput placeholder={placeholder}></StyledInput>
-  )
-}
+const Input = ({ placeholder }: IInput) => {
+  return <StyledInput placeholder={placeholder}></StyledInput>;
+};
 
-export default Input
+export default Input;

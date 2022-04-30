@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { ExpenseContextProvider } from "./context/ExpensesContext/ExpensesContext";
 import { GlobalStyles } from "./GlobalStyles";
 
 const app = document.querySelector("#root");
@@ -12,10 +13,9 @@ const root = createRoot(app);
 
 root.render(
   <React.StrictMode>
-    
-      <GlobalStyles />
+    <GlobalStyles />
+    <ExpenseContextProvider>
       <App />
-    
-
+    </ExpenseContextProvider>
   </React.StrictMode>
 );

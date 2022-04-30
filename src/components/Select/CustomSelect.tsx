@@ -1,9 +1,9 @@
-import React from 'react'
-import Select from "react-select"
+import React from "react";
+import Select from "react-select";
 
 interface IOption {
-  value: string, 
-  label: string
+  value: string;
+  label: string;
 }
 
 const options: IOption[] = [
@@ -19,14 +19,20 @@ const customStyles = {
     fontStyle: "Normal",
     fontWeight: "400",
     fontSize: "12px",
-    lineHeight: "15px"
+    lineHeight: "15px",
   }),
 };
 
 const CustomSelect = () => {
   return (
-    <Select styles={customStyles} options={options} isMulti={false} defaultValue={options[0]} isSearchable={false}/>
-  )
-}
+    <Select
+      styles={customStyles}
+      options={options}
+      isMulti={false}
+      defaultValue={options[0]}
+      isSearchable={false}
+    />
+  );
+};
 
 export default CustomSelect;
