@@ -1,5 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
+import { v4 as uuidv4 } from "uuid";
 import Title from "../Title/Title";
 import {
   StyledButton,
@@ -15,9 +17,15 @@ type FormValues = {
 
 const Form = () => {
   const { register, handleSubmit, reset } = useForm<FormValues>();
-
+  const { setExpenses } = useExpensesContext();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+    setExpenses([
+      {
+        id: uuidv4(),
+        name: data.name,
+        cost: +data.cost,
+      },
+    ]);
     reset();
   };
   return (
@@ -47,3 +55,6 @@ const Form = () => {
 };
 
 export default Form;
+function uuid4() {
+  throw new Error("Function not implemented.");
+}

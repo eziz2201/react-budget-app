@@ -1,14 +1,12 @@
-import React, { ReactNode } from 'react'
-import { StyledBadge } from './styles'
+import React, { ReactNode } from "react";
+import { StyledBadge } from "./styles";
 
 interface IBadge {
-    children: ReactNode,
+  children: ReactNode;
 }
 
-const Badge = ({children}: IBadge) => {
-  return (
-    <StyledBadge>{children}</StyledBadge>
-  )
-}
+const Badge = ({ children }: IBadge) => {
+  return <StyledBadge>{children}</StyledBadge>;
+};
 
-export default Badge
+export default Badge;

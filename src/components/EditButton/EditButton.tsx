@@ -1,16 +1,12 @@
-import React, { ReactNode } from 'react'
-import { StyledEditButton } from './styles';
+import React, { ReactNode } from "react";
+import { StyledEditButton } from "./styles";
 
 interface IProps {
-  children: ReactNode,
+  children: ReactNode;
 }
 
-const EditButton = ({children}:IProps) => {
-  return (
-    <StyledEditButton>
-      {children}
-    </StyledEditButton>
-  )
-}
+const EditButton = ({ children }: IProps) => {
+  return <StyledEditButton>{children}</StyledEditButton>;
+};
 
 export default EditButton;

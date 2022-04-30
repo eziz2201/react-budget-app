@@ -1,16 +1,11 @@
-import React from 'react'
-import { StyledTitle } from './styles'
+import { StyledTitle } from "./styles";
 
 interface ITitle {
-    text: string,
+  text: string;
 }
 
-const Title = ({text}:ITitle) => {
-  return (
-    <StyledTitle>
-        {text}
-    </StyledTitle>
-  )
-}
+const Title = ({ text }: ITitle) => {
+  return <StyledTitle>{text}</StyledTitle>;
+};
 
-export default Title
+export default Title;
