@@ -3,10 +3,11 @@ import { StyledEditButton } from "./styles";
 
 interface IProps {
   children: ReactNode;
+  onClick: () => void;
 }
 
-const EditButton = ({ children }: IProps) => {
-  return <StyledEditButton>{children}</StyledEditButton>;
+const EditButton = ({ children, onClick }: IProps) => {
+  return <StyledEditButton onClick={onClick}>{children}</StyledEditButton>;
 };
 
 export default EditButton;
