@@ -1,4 +1,3 @@
-import React from "react";
 import Select from "react-select";
 
 interface IOption {
@@ -12,21 +11,11 @@ const options: IOption[] = [
   { value: "GBR", label: "GBR" },
 ];
 
-const customStyles = {
-  control: (provided: any) => ({
-    ...provided,
-    fontFamily: "Inter",
-    fontStyle: "Normal",
-    fontWeight: "400",
-    fontSize: "12px",
-    lineHeight: "15px",
-  }),
-};
+
 
 const CustomSelect = () => {
   return (
     <Select
-      styles={customStyles}
       options={options}
       isMulti={false}
       defaultValue={options[0]}
