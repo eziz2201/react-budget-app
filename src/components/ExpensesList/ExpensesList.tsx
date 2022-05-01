@@ -1,5 +1,4 @@
-
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 
 import ExpensesItem from "../ExpensesItem/ExpensesItem";
@@ -8,22 +7,24 @@ import { StyledList } from "./styles";
 
 const ExpensesList = () => {
   const { expenses } = useExpensesContext();
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredExpenses, setFilteredExpenses] = useState(expenses || []);
 
-  const handleSearch = () => {
-
-  }
-
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+  useEffect(() => {
+    setFilteredExpenses(
+      expenses.filter((expense) =>
+        expense.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    );
+  }, [expenses, searchValue]);
   return (
     <StyledList>
       <Input handleSearch={handleSearch} placeholder="search ..." />
-      {expenses.map((item) => {
-        return (
-          <ExpensesItem
-            key={item.id}
-            item={item}
-
-          />
-        );
+      {filteredExpenses.map((expense) => {
+        return <ExpensesItem key={expense.id} expense={expense} />;
       })}
     </StyledList>
   );
