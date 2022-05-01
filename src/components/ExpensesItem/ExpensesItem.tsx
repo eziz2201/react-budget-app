@@ -1,25 +1,29 @@
-import React, { ReactNode } from "react";
+import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import Badge from "../Badge/Badge";
 import Close from "../Close/Close";
+import { IExpense } from "../../context/ExpensesContext/types";
 
 import { StyledContainer, StyledItem } from "./styles";
 
 interface IExpensesItem {
-  text: string;
-  currency: string;
-  cost: number;
+  item: IExpense;
 }
 
-const ExpensesItem = ({ text, currency, cost }: IExpensesItem) => {
+const ExpensesItem = ({ item }: IExpensesItem) => {
+  const { deleteExpense } = useExpensesContext();
+  const handleDelete = () => {
+    deleteExpense(item.id);
+  };
+
   return (
     <StyledItem>
-      {text}
+      {item.name}
       <StyledContainer>
         <Badge>
-          {currency}
-          {cost}
+          {"$"}
+          {item.cost}
         </Badge>
-        <Close />
+        <Close handleDelete={handleDelete} />
       </StyledContainer>
     </StyledItem>
   );

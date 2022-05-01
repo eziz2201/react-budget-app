@@ -13,8 +13,8 @@ const root = createRoot(app);
 
 root.render(
   <React.StrictMode>
-    <GlobalStyles />
     <ExpenseContextProvider>
+      <GlobalStyles />
       <App />
     </ExpenseContextProvider>
   </React.StrictMode>

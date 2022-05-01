@@ -1,14 +1,13 @@
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import { v4 as uuidv4 } from "uuid";
 import Title from "../Title/Title";
 import {
-  StyledButton,
   StyledForm,
   StyledInputContainer,
   SyledInput,
 } from "./styles";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 type FormValues = {
   name: string;
@@ -17,9 +16,10 @@ type FormValues = {
 
 const Form = () => {
   const { register, handleSubmit, reset } = useForm<FormValues>();
-  const { setExpenses } = useExpensesContext();
+  const { expenses, setExpenses } = useExpensesContext();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     setExpenses([
+      ...expenses,
       {
         id: uuidv4(),
         name: data.name,
@@ -49,12 +49,10 @@ const Form = () => {
           })}
         ></SyledInput>
       </StyledInputContainer>
-      <StyledButton type="submit">Done</StyledButton>
+      <SubmitButton />
     </StyledForm>
   );
 };
 
 export default Form;
-function uuid4() {
-  throw new Error("Function not implemented.");
-}
+

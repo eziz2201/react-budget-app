@@ -1,9 +1,12 @@
-import React from "react";
 import { StyledClose } from "./styles";
 
-const Close = () => {
+interface IClose {
+  handleDelete: () => void;
+}
+
+const Close = ({ handleDelete }: IClose) => {
   return (
-    <StyledClose>
+    <StyledClose onClick={handleDelete}>
       <svg
         width="16"
         height="16"

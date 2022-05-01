@@ -8,21 +8,32 @@ import {
 
 const ExpensesContext = createContext<IExpenseContext>({
   expenses: [],
-  setExpenses: (newExpenses: IExpense[]) => {},
+  setExpenses: (newExpenses: IExpense[]) => { },
+  deleteExpense: (id: string) => { },
 });
 
 const useExpensesContextValue = () => {
   const [expensesContext, setExpensesContext] = useState<IExpenseContext>(
     () => ({
-      expenses: [],
+      expenses: [
+        { id: uuidv4(), name: "shopping", cost: 100 },
+      ],
       setExpenses: (newExpenses: IExpense[]) => {
         setExpensesContext((ctx) => ({ ...ctx, expenses: newExpenses }));
+      },
+      deleteExpense: (id: string) => {
+        setExpensesContext((ctx) => ({
+          ...ctx,
+          expenses: ctx.expenses.filter((expense) => expense.id !== id),
+        }));
       },
     })
   );
 
   return expensesContext;
 };
+
+
 
 export const useExpensesContext = () =>
   useContext<IExpenseContext>(ExpensesContext);
@@ -36,3 +47,5 @@ export const ExpenseContextProvider = ({
     </ExpensesContext.Provider>
   );
 };
+
+
