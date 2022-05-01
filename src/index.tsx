@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { BudgetContextProvider } from "./context/BudgetContext/BudgetContext";
 import { ExpenseContextProvider } from "./context/ExpensesContext/ExpensesContext";
 import { GlobalStyles } from "./GlobalStyles";
 
@@ -13,9 +14,11 @@ const root = createRoot(app);
 
 root.render(
   <React.StrictMode>
-    <ExpenseContextProvider>
-      <GlobalStyles />
-      <App />
-    </ExpenseContextProvider>
+    <BudgetContextProvider>
+      <ExpenseContextProvider>
+        <GlobalStyles />
+        <App />
+      </ExpenseContextProvider>
+    </BudgetContextProvider>
   </React.StrictMode>
 );

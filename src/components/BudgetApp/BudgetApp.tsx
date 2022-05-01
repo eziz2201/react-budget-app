@@ -1,4 +1,6 @@
 import { ChangeEvent, useState } from "react";
+import { useBudgetContext } from "../../context/BudgetContext/BudgetContext";
+import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import BudgetCard from "../BudgetCard/BudgetCard";
 import BudgetInput from "../BudgetInput/BudgetInput";
 import EditButton from "../EditButton/EditButton";
@@ -8,14 +10,19 @@ import Title from "../Title/Title";
 import { StyledBudgetApp, StyledContainer } from "./styles";
 
 const BudgetApp = () => {
-  const [value, setValue] = useState(3000);
+  const { expenses } = useExpensesContext();
+  const { budget, setBudget } = useBudgetContext();
   const [isClick, setIsClick] = useState(false);
   const handleClick = () => {
     isClick === false ? setIsClick(true) : setIsClick(false);
   };
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(+event.target.value);
+    setBudget(+event.target.value);
   };
+
+  const totalExpenses = expenses.reduce((total, item) => {
+    return (total = total + item.cost);
+  }, 0);
 
   return (
     <StyledBudgetApp>
@@ -27,14 +34,18 @@ const BudgetApp = () => {
         {isClick ? (
           <BudgetInput handleChange={handleChange} />
         ) : (
-          `${"Budget:"} ${"$"}${value}`
+          `${"Budget:"} ${"$"}${budget}`
         )}
         <EditButton onClick={handleClick}>
           {isClick ? "Save" : "Edit"}
         </EditButton>
       </BudgetCard>
-      <BudgetCard type={"remaining"}>Remaining: ${"2000"}</BudgetCard>
-      <BudgetCard type={"spent"}>Spent so far: ${"1000"}</BudgetCard>
+      <BudgetCard type={"remaining"}>
+        Remaining: ${budget - totalExpenses}
+      </BudgetCard>
+      <BudgetCard type={"spent"}>
+        Spent so far: ${budget - (budget - totalExpenses)}
+      </BudgetCard>
     </StyledBudgetApp>
   );
 };
