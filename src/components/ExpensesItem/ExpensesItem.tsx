@@ -6,22 +6,22 @@ import { IExpense } from "../../context/ExpensesContext/types";
 import { StyledContainer, StyledItem } from "./styles";
 
 interface IExpensesItem {
-  item: IExpense;
+  expense: IExpense;
 }
 
-const ExpensesItem = ({ item }: IExpensesItem) => {
+const ExpensesItem = ({ expense }: IExpensesItem) => {
   const { deleteExpense } = useExpensesContext();
   const handleDelete = () => {
-    deleteExpense(item.id);
+    deleteExpense(expense.id);
   };
 
   return (
     <StyledItem>
-      {item.name}
+      {expense.name}
       <StyledContainer>
         <Badge>
           {"$"}
-          {item.cost}
+          {expense.cost}
         </Badge>
         <Close handleDelete={handleDelete} />
       </StyledContainer>
