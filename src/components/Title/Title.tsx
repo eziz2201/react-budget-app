@@ -1,8 +1,5 @@
+import { ITitle } from "../../types/types";
 import { StyledTitle } from "./styles";
-
-interface ITitle {
-  text: string;
-}
 
 const Title = ({ text }: ITitle) => {
   return <StyledTitle>{text}</StyledTitle>;

@@ -1,10 +1,5 @@
-import { ChangeEvent } from "react";
+import { IInput } from "../../types/types";
 import { StyledInput } from "./styles";
-
-interface IInput {
-  placeholder: string;
-  handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-}
 
 const Input = ({ placeholder, handleSearch }: IInput) => {
   return (

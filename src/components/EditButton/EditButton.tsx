@@ -1,12 +1,7 @@
-import { ReactNode } from "react";
+import { IEditButton } from "../../types/types";
 import { StyledEditButton } from "./styles";
 
-interface IProps {
-  children: ReactNode;
-  onClick: () => void;
-}
-
-const EditButton = ({ children, onClick }: IProps) => {
+const EditButton = ({ children, onClick }: IEditButton) => {
   return <StyledEditButton onClick={onClick}>{children}</StyledEditButton>;
 };
 

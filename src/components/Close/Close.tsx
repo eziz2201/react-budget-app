@@ -1,8 +1,5 @@
+import { IClose } from "../../types/types";
 import { StyledClose } from "./styles";
-
-interface IClose {
-  handleDelete: () => void;
-}
 
 const Close = ({ handleDelete }: IClose) => {
   return (

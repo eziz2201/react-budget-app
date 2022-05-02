@@ -1,9 +1,5 @@
-import { ChangeEvent } from "react";
+import { IBudgetInput } from "../../types/types";
 import { StyledInput } from "./styles";
-
-interface IBudgetInput {
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
 
 const BudgetInput = ({ handleChange }: IBudgetInput) => {
   return (
