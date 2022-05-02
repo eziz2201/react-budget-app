@@ -2,17 +2,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import { v4 as uuidv4 } from "uuid";
 import Title from "../Title/Title";
-import {
-  StyledForm,
-  StyledInputContainer,
-  SyledInput,
-} from "./styles";
+import { StyledForm, StyledInputContainer, SyledInput } from "./styles";
 import SubmitButton from "../SubmitButton/SubmitButton";
-
-type FormValues = {
-  name: string;
-  cost: number | string;
-};
+import { FormValues } from "../../types/types";
 
 const Form = () => {
   const { register, handleSubmit, reset } = useForm<FormValues>();
@@ -55,4 +47,3 @@ const Form = () => {
 };
 
 export default Form;
-

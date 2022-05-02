@@ -1,11 +1,7 @@
-import { ReactNode } from "react";
+import { IChildren } from "../../types/types";
 import { StyledBadge } from "./styles";
 
-interface IBadge {
-  children: ReactNode;
-}
-
-const Badge = ({ children }: IBadge) => {
+const Badge = ({ children }: IChildren) => {
   return <StyledBadge>{children}</StyledBadge>;
 };
 

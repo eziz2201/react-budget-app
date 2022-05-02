@@ -1,14 +1,9 @@
 import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContext";
 import Badge from "../Badge/Badge";
 import Close from "../Close/Close";
-import { IExpense } from "../../context/ExpensesContext/types";
-
 import { StyledContainer, StyledItem } from "./styles";
 import { useCurrencyContext } from "../../context/CurrencyContext/CurrencyContext";
-
-interface IExpensesItem {
-  expense: IExpense;
-}
+import { IExpensesItem } from "../../types/types";
 
 const ExpensesItem = ({ expense }: IExpensesItem) => {
   const { currency } = useCurrencyContext();
