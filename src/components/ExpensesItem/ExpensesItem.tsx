@@ -4,12 +4,14 @@ import Close from "../Close/Close";
 import { IExpense } from "../../context/ExpensesContext/types";
 
 import { StyledContainer, StyledItem } from "./styles";
+import { useCurrencyContext } from "../../context/CurrencyContext/CurrencyContext";
 
 interface IExpensesItem {
   expense: IExpense;
 }
 
 const ExpensesItem = ({ expense }: IExpensesItem) => {
+  const { currency } = useCurrencyContext();
   const { deleteExpense } = useExpensesContext();
   const handleDelete = () => {
     deleteExpense(expense.id);
@@ -20,7 +22,7 @@ const ExpensesItem = ({ expense }: IExpensesItem) => {
       {expense.name}
       <StyledContainer>
         <Badge>
-          {"$"}
+          {currency}
           {expense.cost}
         </Badge>
         <Close handleDelete={handleDelete} />

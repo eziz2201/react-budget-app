@@ -6,5 +6,5 @@ export interface IBudgetContextProviderProps {
 
 export interface IBudgetContext {
   budget: number;
-  setBudget: (newExpenses: number) => void;
+  setBudget: (newBudget: number) => void;
 }
