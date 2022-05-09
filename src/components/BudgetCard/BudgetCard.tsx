@@ -1,6 +1,10 @@
-import { IBudgetCard } from "../../types/types";
-import { SyledBudgetCard } from "./styles";
+import { ReactNode } from "react";
 
+import { SyledBudgetCard } from "./styles";
+interface IBudgetCard {
+  type: string;
+  children?: ReactNode;
+}
 const BudgetCard = ({ type, children }: IBudgetCard) => {
   return <SyledBudgetCard type={type}>{children}</SyledBudgetCard>;
 };

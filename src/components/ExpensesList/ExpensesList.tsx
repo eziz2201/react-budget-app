@@ -3,7 +3,7 @@ import { useExpensesContext } from "../../context/ExpensesContext/ExpensesContex
 
 import ExpensesItem from "../ExpensesItem/ExpensesItem";
 import Input from "../Input/Input";
-import { StyledList } from "./styles";
+import { StyledList, StyledText } from "./styles";
 
 const ExpensesList = () => {
   const { expenses } = useExpensesContext();
@@ -23,9 +23,9 @@ const ExpensesList = () => {
   return (
     <StyledList>
       <Input handleSearch={handleSearch} placeholder="search ..." />
-      {filteredExpenses.map((expense) => {
+      {filteredExpenses.length ? filteredExpenses.map((expense) => {
         return <ExpensesItem key={expense.id} expense={expense} />;
-      })}
+      }) : <StyledText>Oooops 🙈</StyledText>}
     </StyledList>
   );
 };

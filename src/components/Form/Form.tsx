@@ -4,8 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 import Title from "../Title/Title";
 import { StyledForm, StyledInputContainer, SyledInput } from "./styles";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import { FormValues } from "../../types/types";
 
+type FormValues = {
+  name: string;
+  cost: number;
+};
 const Form = () => {
   const { register, handleSubmit, reset } = useForm<FormValues>();
   const { expenses, setExpenses } = useExpensesContext();
