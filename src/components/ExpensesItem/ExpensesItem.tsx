@@ -13,7 +13,7 @@ const ExpensesItem = ({ expense }: IExpensesItem) => {
   const handleDelete = () => {
     deleteExpense(expense.id);
   };
-
+ 
   return (
     <StyledItem>
       {expense.name}
